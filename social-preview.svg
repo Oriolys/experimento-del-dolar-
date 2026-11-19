@@ -1,0 +1,10 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="1200" height="630" viewBox="0 0 1200 630">
+<defs><linearGradient id="bg" x1="0" x2="1" y1="0" y2="1"><stop stop-color="#164e3c"/><stop offset="1" stop-color="#071e20"/></linearGradient></defs>
+<rect width="1200" height="630" fill="url(#bg)"/>
+<circle cx="1020" cy="100" r="245" fill="#c8ff88" opacity=".10"/>
+<circle cx="150" cy="550" r="275" fill="#c8ff88" opacity=".08"/>
+<text x="100" y="165" font-size="86">💵😂</text>
+<text x="95" y="300" font-size="80" font-weight="bold" fill="#f5fff8" font-family="Arial,sans-serif">Would you give a</text>
+<text x="95" y="405" font-size="105" font-weight="bold" fill="#c8ff88" font-family="Arial,sans-serif">stranger $1?</text>
+<text x="100" y="500" font-size="33" fill="#d6eadf" font-family="Arial,sans-serif">The $1 Experiment  •  A global curiosity test</text>
+</svg>
