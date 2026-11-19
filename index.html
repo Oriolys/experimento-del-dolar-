@@ -1,0 +1,68 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<meta name="theme-color" content="#0d2220">
+<meta name="description" content="Would you give a complete stranger just $1? An honest, playful global social experiment.">
+<meta property="og:type" content="website">
+<meta property="og:title" content="The $1 Experiment — Would you give a stranger $1?">
+<meta property="og:description" content="No sad story. No emergency. Just a funny $1 experiment. 💵😂">
+<meta property="og:image" content="https://raw.githubusercontent.com/Oriolys/experimento-del-dolar-/main/social-preview.svg">
+<title>The $1 Experiment 💵😂</title>
+<style>
+:root{color-scheme:dark;--bg:#091918;--text:#f5fff8;--muted:#b6d3c8;--lime:#c8ff88;--border:#456c60}
+*{box-sizing:border-box}
+body{margin:0;min-height:100svh;font-family:system-ui,-apple-system,Segoe UI,Roboto,sans-serif;background:radial-gradient(ellipse at 25% 0%,#285d4d 0%,transparent 52%),var(--bg);color:var(--text);padding:24px;display:grid;place-items:center}
+main{max-width:720px;width:100%;padding:clamp(26px,6vw,60px);border:1px solid var(--border);border-radius:28px;background:linear-gradient(145deg,#183d35,#102521);box-shadow:0 22px 65px #0007}
+nav{display:flex;gap:8px;flex-wrap:wrap}
+button{cursor:pointer;font:inherit;font-weight:700;border-radius:12px;padding:11px 16px;border:0;background:var(--lime);color:#15291b}
+button:focus-visible{outline:3px solid #fff;outline-offset:3px}
+.lang{background:#264a40;color:#f4fff9;border:1px solid #527b68;padding:9px 12px}
+.lang[aria-pressed=true]{background:var(--lime);color:#112c19}
+.emoji{font-size:clamp(62px,12vw,96px);margin:20px 0 0}
+h1{font-size:clamp(35px,6vw,58px);line-height:1.08;letter-spacing:-.045em;margin:12px 0 22px}
+h1 span{color:var(--lime)}
+p{font-size:clamp(17px,2.6vw,20px);line-height:1.55;color:var(--muted)}
+.panel{border:1px solid #558978;border-radius:18px;padding:20px;margin:28px 0;background:#0b201a}
+.panel small{display:block;color:var(--muted);line-height:1.5;margin-bottom:8px}
+code{font:700 clamp(18px,3vw,24px) system-ui;color:var(--lime);overflow-wrap:anywhere}
+#copy{display:block;margin-top:16px}
+footer{font-size:13px;line-height:1.55;color:#9abfb2;margin-top:24px}
+</style>
+</head>
+<body><main>
+<nav aria-label="Choose language">
+<button class="lang" data-l="en" aria-pressed="true">🇺🇸 English</button>
+<button class="lang" data-l="es" aria-pressed="false">🇪🇸 Español</button>
+<button class="lang" data-l="pt" aria-pressed="false">🇧🇷 Português</button>
+<button class="lang" data-l="fr" aria-pressed="false">🇫🇷 Français</button>
+</nav>
+<div class="emoji" aria-hidden="true">💸😂</div>
+<h1 id="title">Would you give a stranger <span>$1?</span></h1>
+<p id="intro">Quick and slightly ridiculous experiment: would you give a complete stranger one dollar, just out of curiosity?</p>
+<p id="details">No emergency, no charity, no made-up sad story. Participation is completely optional.</p>
+<section class="panel">
+<small id="paylabel">If you want to participate, open PayPal and send $1 to:</small>
+<code>Kapivara70@gmail.com</code>
+<button type="button" id="copy">Copy PayPal email</button>
+</section>
+<p id="ending">If not, thanks for reading this little bit of madness! 🌎💵</p>
+<footer id="foot">Personal experiment. Not affiliated with PayPal or GitHub. Payment fees may apply.</footer>
+</main>
+<script>
+const words={
+ en:{title:'Would you give a stranger <span>$1?</span>',intro:'Quick and slightly ridiculous experiment: would you give a complete stranger one dollar, just out of curiosity?',details:'No emergency, no charity, no made-up sad story. Participation is completely optional.',paylabel:'If you want to participate, open PayPal and send $1 to:',copy:'Copy PayPal email',copied:'Copied!',ending:'If not, thanks for reading this little bit of madness! 🌎💵',foot:'Personal experiment. Not affiliated with PayPal or GitHub. Payment fees may apply.'},
+ es:{title:'¿Le regalarías <span>US$1</span> a un desconocido?',intro:'Experimento rápido y un poco absurdo: ¿le regalarías un dólar a un completo desconocido, solo por curiosidad?',details:'Sin emergencias, caridad ni historias tristes inventadas. Participar es totalmente voluntario.',paylabel:'Si quieres participar, abre PayPal y envía US$1 a:',copy:'Copiar correo de PayPal',copied:'¡Copiado!',ending:'Si no, ¡gracias por leer esta locura! 🌎💵',foot:'Experimento personal. Sin afiliación con PayPal o GitHub. Pueden aplicarse comisiones.'},
+ pt:{title:'Você daria <span>US$1</span> a um desconhecido?',intro:'Um experimento rápido e meio absurdo: você daria um dólar a um completo desconhecido, só por curiosidade?',details:'Sem emergência, caridade ou histórias tristes inventadas. Participar é totalmente opcional.',paylabel:'Se quiser participar, abra o PayPal e envie US$1 para:',copy:'Copiar e-mail do PayPal',copied:'Copiado!',ending:'Se não, obrigado por ler essa loucura! 🌎💵',foot:'Experimento pessoal, sem afiliação ao PayPal ou GitHub. Taxas podem ser aplicadas.'},
+ fr:{title:'Donnerais-tu <span>1 $</span> à un inconnu ?',intro:'Une petite expérience un peu absurde : donnerais-tu un dollar à un parfait inconnu, juste par curiosité ?',details:'Ni urgence, ni association caritative, ni fausse histoire triste. Participation entièrement facultative.',paylabel:'Pour participer, ouvre PayPal et envoie 1 $ à :',copy:'Copier l’adresse PayPal',copied:'Copié !',ending:'Sinon, merci d’avoir lu cette petite folie ! 🌎💵',foot:'Expérience personnelle, sans lien avec PayPal ou GitHub. Des frais peuvent s’appliquer.'}
+};
+let language='en';
+const ids=['title','intro','details','paylabel','copy','ending','foot'];
+function setLang(l){language=l;document.documentElement.lang=l;for(const id of ids){const target=document.getElementById(id);if(id==='title')target.innerHTML=words[l][id];else target.textContent=words[l][id];}document.querySelectorAll('.lang').forEach(b=>b.setAttribute('aria-pressed',String(b.dataset.l===l)));}
+document.querySelectorAll('.lang').forEach(b=>b.addEventListener('click',()=>setLang(b.dataset.l)));
+document.getElementById('copy').addEventListener('click',async()=>{try{await navigator.clipboard.writeText('Kapivara70@gmail.com');document.getElementById('copy').textContent=words[language].copied;}catch{window.prompt('Copy PayPal:', 'Kapivara70@gmail.com');}});
+const browserLang=(navigator.language||'en').slice(0,2);
+if(words[browserLang])setLang(browserLang);
+</script>
+</body></html>
