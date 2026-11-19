@@ -27,7 +27,7 @@ p{font-size:clamp(17px,2.6vw,20px);line-height:1.55;color:var(--muted)}
 .panel{border:1px solid #558978;border-radius:18px;padding:20px;margin:28px 0;background:#0b201a}
 .panel small{display:block;color:var(--muted);line-height:1.5;margin-bottom:8px}
 code{font:700 clamp(18px,3vw,24px) system-ui;color:var(--lime);overflow-wrap:anywhere}
-#copy{display:block;margin-top:16px}
+#copy{display:block;margin-top:16px}.share{background:#254c40;color:#f5fff8;border:1px solid #527b68;display:block;margin:0 0 14px}
 footer{font-size:13px;line-height:1.55;color:#9abfb2;margin-top:24px}
 </style>
 </head>
@@ -47,6 +47,7 @@ footer{font-size:13px;line-height:1.55;color:#9abfb2;margin-top:24px}
 <code>Kapivara70@gmail.com</code>
 <button type="button" id="copy">Copy PayPal email</button>
 </section>
+<button type="button" id="share" class="share">Share this experiment 🌎</button>
 <p id="ending">If not, thanks for reading this little bit of madness! 🌎💵</p>
 <footer id="foot">Personal experiment. Not affiliated with PayPal or GitHub. Payment fees may apply.</footer>
 </main>
@@ -59,9 +60,12 @@ const words={
 };
 let language='en';
 const ids=['title','intro','details','paylabel','copy','ending','foot'];
-function setLang(l){language=l;document.documentElement.lang=l;for(const id of ids){const target=document.getElementById(id);if(id==='title')target.innerHTML=words[l][id];else target.textContent=words[l][id];}document.querySelectorAll('.lang').forEach(b=>b.setAttribute('aria-pressed',String(b.dataset.l===l)));}
+function setLang(l){language=l;document.documentElement.lang=l;for(const id of ids){const target=document.getElementById(id);if(id==='title')target.innerHTML=words[l][id];else target.textContent=words[l][id];}document.querySelectorAll('.lang').forEach(b=>b.setAttribute('aria-pressed',String(b.dataset.l===l)));document.getElementById('share').textContent=shareLabels[l];}
 document.querySelectorAll('.lang').forEach(b=>b.addEventListener('click',()=>setLang(b.dataset.l)));
 document.getElementById('copy').addEventListener('click',async()=>{try{await navigator.clipboard.writeText('Kapivara70@gmail.com');document.getElementById('copy').textContent=words[language].copied;}catch{window.prompt('Copy PayPal:', 'Kapivara70@gmail.com');}});
+const shareLabels={en:'Share this experiment 🌎',es:'Compartir este experimento 🌎',pt:'Compartilhar este experimento 🌎',fr:'Partager cette expérience 🌎'};
+const shareButton=document.getElementById('share');
+shareButton.addEventListener('click',async()=>{const shareData={title:'The $1 Experiment 💵😂',text:language==='es'?'¿Le regalarías un dólar a un desconocido? 😂': 'Would you give a stranger $1? 😂',url:location.href};try{if(navigator.share){await navigator.share(shareData)}else if(navigator.clipboard){await navigator.clipboard.writeText(location.href);shareButton.textContent=language==='es'?'¡Enlace copiado!': 'Link copied!'}else{window.prompt('Share this link:',location.href)}}catch(err){if(err.name!=='AbortError')window.prompt('Share this link:',location.href)}});
 const browserLang=(navigator.language||'en').slice(0,2);
 if(words[browserLang])setLang(browserLang);
 </script>
